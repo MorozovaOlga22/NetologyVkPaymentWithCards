@@ -12,11 +12,10 @@ fun main() {
     println(getCommission(100_000, cardType = CardType.Visa))
     println(getCommission(100_000_000, cardType = CardType.Visa))
     println(getCommission(100_000, 100_000_000, cardType = CardType.Visa))
-
 }
 
-private fun getCommission(currentAmount: Int, previousAmount: Int = 0, cardType: CardType = CardType.VkPay): Int {
-    return when (cardType) {
+private fun getCommission(currentAmount: Int, previousAmount: Int = 0, cardType: CardType = CardType.VkPay): Int =
+    when (cardType) {
         CardType.Mastercard, CardType.Maestro -> {
             val commissionMultiplier = 0.006
             val additionalCommission = 2_000
@@ -32,7 +31,6 @@ private fun getCommission(currentAmount: Int, previousAmount: Int = 0, cardType:
         }
         CardType.VkPay -> 0
     }
-}
 
 private enum class CardType {
     Mastercard, Maestro, Visa, Mir, VkPay
